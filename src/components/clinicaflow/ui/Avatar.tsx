@@ -9,5 +9,9 @@ interface AvatarProps {
 
 export function Avatar({ nome, iniciais, cor, size }: AvatarProps) {
   const cls = 'av' + (size ? ' ' + size : '')
-  return <div className={cls} style={{ background: cor || 'var(--accent)' }} title={nome}>{iniciais}</div>
+  return (
+    <div className={cls} style={{ background: cor || 'var(--accent)' }} title={nome}>
+      {iniciais}
+    </div>
+  )
 }

@@ -53,8 +53,12 @@ export function Sidebar({ route, onNavigate, onSoon }: SidebarProps) {
   return (
     <aside id="sidebar">
       <div className="brand">
-        <div className="mark"><Icon name="hand" size={20} stroke={2.2} /></div>
-        <div className="nm">ClinicaFlow<small>CRM conversacional</small></div>
+        <div className="mark">
+          <Icon name="hand" size={20} stroke={2.2} />
+        </div>
+        <div className="nm">
+          ClinicaFlow<small>CRM conversacional</small>
+        </div>
       </div>
       <div className="nav-search">
         <Icon name="search" size={15} />
@@ -63,17 +67,25 @@ export function Sidebar({ route, onNavigate, onSoon }: SidebarProps) {
       </div>
       <nav className="nav-scroll">
         <div className="nav-sec">Operação</div>
-        {NAV_ACTIVE.map(m => (
-          <div key={m.id} className={'nav-item' + (route === m.id ? ' active' : '')} onClick={() => onNavigate(m.id)}>
-            <span className="ic"><Icon name={m.ic} size={17} /></span>
+        {NAV_ACTIVE.map((m) => (
+          <div
+            key={m.id}
+            className={'nav-item' + (route === m.id ? ' active' : '')}
+            onClick={() => onNavigate(m.id)}
+          >
+            <span className="ic">
+              <Icon name={m.ic} size={17} />
+            </span>
             <span className="lb">{m.label}</span>
             {m.count ? <span className="count">{m.count}</span> : null}
           </div>
         ))}
         <div className="nav-sec">Em breve</div>
-        {NAV_SOON.map(m => (
+        {NAV_SOON.map((m) => (
           <div key={m.id} className="nav-item soon" onClick={() => onSoon(m.label)}>
-            <span className="ic"><Icon name={m.ic} size={17} /></span>
+            <span className="ic">
+              <Icon name={m.ic} size={17} />
+            </span>
             <span className="lb">{m.label}</span>
             <span className="soon-tag">🔜</span>
           </div>
@@ -85,7 +97,9 @@ export function Sidebar({ route, onNavigate, onSoon }: SidebarProps) {
           <div className="b sm">Recepção · Manhã</div>
           <div className="tiny muted">Unidade Centro</div>
         </div>
-        <button className="icon-btn"><Icon name="settings" size={17} /></button>
+        <button className="icon-btn">
+          <Icon name="settings" size={17} />
+        </button>
       </div>
     </aside>
   )

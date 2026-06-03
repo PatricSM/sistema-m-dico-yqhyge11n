@@ -1,13 +1,7 @@
 /* Tipos compartilhados do ClinicaFlow (rotas internas, navegação e toasts) */
 import type { IconName } from './icons'
 
-export type RouteId =
-  | 'dashboard'
-  | 'agente'
-  | 'inbox'
-  | 'contatos'
-  | 'agendamento'
-  | 'conexoes'
+export type RouteId = 'dashboard' | 'agente' | 'inbox' | 'contatos' | 'agendamento' | 'conexoes'
 
 export type NavigateFn = (id: RouteId) => void
 

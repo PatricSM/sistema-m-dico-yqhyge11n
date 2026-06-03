@@ -14,10 +14,11 @@ export function Modal({ children, onClose, iconName, iconBg, iconColor }: ModalP
   return (
     <div className="scrim" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        {iconName &&
+        {iconName && (
           <div className="m-ic" style={{ background: iconBg, color: iconColor }}>
             <Icon name={iconName} size={26} />
-          </div>}
+          </div>
+        )}
         {children}
       </div>
     </div>

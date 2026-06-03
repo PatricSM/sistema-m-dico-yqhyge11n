@@ -9,5 +9,12 @@ interface PillProps {
 }
 
 export function Pill({ children, tone, className, style }: PillProps) {
-  return <span className={'pill' + (tone ? ' ' + tone : '') + (className ? ' ' + className : '')} style={style}>{children}</span>
+  return (
+    <span
+      className={'pill' + (tone ? ' ' + tone : '') + (className ? ' ' + className : '')}
+      style={style}
+    >
+      {children}
+    </span>
+  )
 }

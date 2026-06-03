@@ -9,7 +9,7 @@ interface ToastHostProps {
 export function ToastHost({ toasts }: ToastHostProps) {
   return (
     <div id="toast-wrap">
-      {toasts.map(t => (
+      {toasts.map((t) => (
         <div className="toast" key={t.id}>
           <Icon name={t.icon || 'check'} size={18} className="ic" />
           <span>{t.msg}</span>

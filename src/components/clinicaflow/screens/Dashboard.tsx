@@ -21,16 +21,35 @@ export function ScreenDashboard({ onNavigate }: DashboardProps) {
     ['11:30', 'M. Dias', 'Cardiologia', 'ocupado'],
     ['14:30', 'João Santos', 'Cardiologia', 'novo'],
   ]
-  const funil: [string, number, string][] = [['Novo', 28, 'var(--faint)'], ['Em conversa', 19, 'var(--warn)'], ['Qualificado', 14, 'var(--accent)'], ['Agendado', 12, 'var(--success)']]
+  const funil: [string, number, string][] = [
+    ['Novo', 28, 'var(--faint)'],
+    ['Em conversa', 19, 'var(--warn)'],
+    ['Qualificado', 14, 'var(--accent)'],
+    ['Agendado', 12, 'var(--success)'],
+  ]
 
-  const kpi = (lbl: string, n: number | string, color: string, trend: string, trendColor: string, icon: IconName, iconBg: string) => (
+  const kpi = (
+    lbl: string,
+    n: number | string,
+    color: string,
+    trend: string,
+    trendColor: string,
+    icon: IconName,
+    iconBg: string,
+  ) => (
     <div className="card kpi">
       <div className="row between">
         <div className="lbl">{lbl}</div>
-        <div className="ic-badge" style={{ background: iconBg, color }}><Icon name={icon} size={16} /></div>
+        <div className="ic-badge" style={{ background: iconBg, color }}>
+          <Icon name={icon} size={16} />
+        </div>
       </div>
-      <div className="n" style={{ color }}>{n}</div>
-      <div className="trend" style={{ color: trendColor }}>{trend}</div>
+      <div className="n" style={{ color }}>
+        {n}
+      </div>
+      <div className="trend" style={{ color: trendColor }}>
+        {trend}
+      </div>
     </div>
   )
 
@@ -39,22 +58,60 @@ export function ScreenDashboard({ onNavigate }: DashboardProps) {
       <div className="page-head">
         <div>
           <h1 className="t-display">Bom dia, Recepção Centro 👋</h1>
-          <p className="sub">Visão do dia — conversas, fila de atendimento e agendamentos gerados via WhatsApp.</p>
+          <p className="sub">
+            Visão do dia — conversas, fila de atendimento e agendamentos gerados via WhatsApp.
+          </p>
         </div>
         <div className="row gap-2">
           <Button icon="trend">Relatório do dia</Button>
-          <Button variant="whats" icon="chat" onClick={() => onNavigate('inbox')}>Abrir inbox</Button>
+          <Button variant="whats" icon="chat" onClick={() => onNavigate('inbox')}>
+            Abrir inbox
+          </Button>
         </div>
       </div>
 
       <div className="kpi-grid mb-5">
-        {kpi('Conversas abertas', 7, 'var(--fg)', '▲ 2 desde ontem', 'var(--success)', 'chat', 'var(--accent-weak)')}
-        {kpi('Aguardando atendente', 3, 'var(--warn)', 'tempo médio 4 min', 'var(--muted)', 'clock', 'var(--warn-weak)')}
-        {kpi('Agendados hoje', 12, 'var(--accent)', 'via secretária virtual: 9', 'var(--muted)', 'calendar', 'var(--accent-weak)')}
-        {kpi('Conversão p/ agendamento', '68%', 'var(--success)', '▲ 5 pts na semana', 'var(--success)', 'trend', 'var(--success-weak)')}
+        {kpi(
+          'Conversas abertas',
+          7,
+          'var(--fg)',
+          '▲ 2 desde ontem',
+          'var(--success)',
+          'chat',
+          'var(--accent-weak)',
+        )}
+        {kpi(
+          'Aguardando atendente',
+          3,
+          'var(--warn)',
+          'tempo médio 4 min',
+          'var(--muted)',
+          'clock',
+          'var(--warn-weak)',
+        )}
+        {kpi(
+          'Agendados hoje',
+          12,
+          'var(--accent)',
+          'via secretária virtual: 9',
+          'var(--muted)',
+          'calendar',
+          'var(--accent-weak)',
+        )}
+        {kpi(
+          'Conversão p/ agendamento',
+          '68%',
+          'var(--success)',
+          '▲ 5 pts na semana',
+          'var(--success)',
+          'trend',
+          'var(--success-weak)',
+        )}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 18, alignItems: 'start' }}>
+      <div
+        style={{ display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 18, alignItems: 'start' }}
+      >
         <div className="col gap-4">
           <div className="card pad">
             <div className="card-h">
@@ -65,10 +122,16 @@ export function ScreenDashboard({ onNavigate }: DashboardProps) {
               {funil.map(([l, n, c], i) => (
                 <Fragment key={l}>
                   <div className="stage">
-                    <div className="n" style={{ color: c }}>{n}</div>
+                    <div className="n" style={{ color: c }}>
+                      {n}
+                    </div>
                     <div className="l">{l}</div>
                   </div>
-                  {i < funil.length - 1 && <div className="arr"><Icon name="chevR" size={18} /></div>}
+                  {i < funil.length - 1 && (
+                    <div className="arr">
+                      <Icon name="chevR" size={18} />
+                    </div>
+                  )}
                 </Fragment>
               ))}
             </div>
@@ -77,10 +140,16 @@ export function ScreenDashboard({ onNavigate }: DashboardProps) {
           <div className="card pad">
             <div className="card-h">
               <div className="t">Conversas recentes</div>
-              <a className="sm b" style={{ color: 'var(--accent)', cursor: 'pointer' }} onClick={() => onNavigate('inbox')}>ver todas →</a>
+              <a
+                className="sm b"
+                style={{ color: 'var(--accent)', cursor: 'pointer' }}
+                onClick={() => onNavigate('inbox')}
+              >
+                ver todas →
+              </a>
             </div>
             <div>
-              {recent.map(c => {
+              {recent.map((c) => {
                 const ct = DATA.contacts[c.contatoId]
                 return (
                   <div className="lrow" key={c.id} onClick={() => onNavigate('inbox')}>
@@ -103,31 +172,79 @@ export function ScreenDashboard({ onNavigate }: DashboardProps) {
         <div className="col gap-4">
           <div className="card pad">
             <div className="card-h">
-              <div className="t"><Icon name="calendar" size={16} style={{ color: 'var(--accent)' }} />Agenda de hoje</div>
-              <Pill tone="green"><span className="dot"></span>Feegow</Pill>
+              <div className="t">
+                <Icon name="calendar" size={16} style={{ color: 'var(--accent)' }} />
+                Agenda de hoje
+              </div>
+              <Pill tone="green">
+                <span className="dot"></span>Feegow
+              </Pill>
             </div>
             <div>
               {agenda.map(([h, nm, esp, st], i) => (
-                <div className="row gap-3" key={i} style={{ padding: '9px 0', borderTop: i ? '1px solid var(--border-2)' : 'none' }}>
-                  <div className="mono b" style={{ minWidth: 42, color: 'var(--fg)' }}>{h}</div>
+                <div
+                  className="row gap-3"
+                  key={i}
+                  style={{ padding: '9px 0', borderTop: i ? '1px solid var(--border-2)' : 'none' }}
+                >
+                  <div className="mono b" style={{ minWidth: 42, color: 'var(--fg)' }}>
+                    {h}
+                  </div>
                   <div className="grow">
-                    <div className="b sm" style={{ color: st === 'livre' ? 'var(--faint)' : 'var(--fg)' }}>{nm}</div>
+                    <div
+                      className="b sm"
+                      style={{ color: st === 'livre' ? 'var(--faint)' : 'var(--fg)' }}
+                    >
+                      {nm}
+                    </div>
                     <div className="tiny muted">{esp}</div>
                   </div>
-                  {st === 'livre'
-                    ? <Pill tone="outline">vago</Pill>
-                    : <span className="dot" style={{ width: 8, height: 8, borderRadius: '50%', background: st === 'novo' ? 'var(--accent)' : 'var(--success)' }}></span>}
+                  {st === 'livre' ? (
+                    <Pill tone="outline">vago</Pill>
+                  ) : (
+                    <span
+                      className="dot"
+                      style={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: '50%',
+                        background: st === 'novo' ? 'var(--accent)' : 'var(--success)',
+                      }}
+                    ></span>
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
           <div className="card pad">
-            <div className="card-h"><div className="t">Status das integrações</div></div>
-            <div className="kv"><span className="k">Feegow API</span><span className="v"><Pill tone="green"><span className="dot"></span>online</Pill></span></div>
-            <div className="kv"><span className="k">WhatsApp · Cloud API</span><span className="v"><Pill tone="green"><span className="dot"></span>conectado</Pill></span></div>
-            <div className="kv"><span className="k">Rate limit Feegow</span><span className="v">23 / 60 req·min</span></div>
-            <div className="kv"><span className="k">Janela 24h (Meta)</span><span className="v muted">4 conv. fora</span></div>
+            <div className="card-h">
+              <div className="t">Status das integrações</div>
+            </div>
+            <div className="kv">
+              <span className="k">Feegow API</span>
+              <span className="v">
+                <Pill tone="green">
+                  <span className="dot"></span>online
+                </Pill>
+              </span>
+            </div>
+            <div className="kv">
+              <span className="k">WhatsApp · Cloud API</span>
+              <span className="v">
+                <Pill tone="green">
+                  <span className="dot"></span>conectado
+                </Pill>
+              </span>
+            </div>
+            <div className="kv">
+              <span className="k">Rate limit Feegow</span>
+              <span className="v">23 / 60 req·min</span>
+            </div>
+            <div className="kv">
+              <span className="k">Janela 24h (Meta)</span>
+              <span className="v muted">4 conv. fora</span>
+            </div>
           </div>
         </div>
       </div>

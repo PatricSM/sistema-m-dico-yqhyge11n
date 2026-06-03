@@ -14,7 +14,17 @@ interface ButtonProps {
   style?: CSSProperties
 }
 
-export function Button({ variant = 'secondary', size, block, icon, iconRight, children, onClick, disabled, style }: ButtonProps) {
+export function Button({
+  variant = 'secondary',
+  size,
+  block,
+  icon,
+  iconRight,
+  children,
+  onClick,
+  disabled,
+  style,
+}: ButtonProps) {
   const cls = ['btn', variant, size, block ? 'block' : ''].filter(Boolean).join(' ')
   return (
     <button className={cls} onClick={onClick} disabled={disabled} style={style}>

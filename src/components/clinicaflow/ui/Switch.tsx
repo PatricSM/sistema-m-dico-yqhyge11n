@@ -7,7 +7,11 @@ interface SwitchProps {
 
 export function Switch({ on, onChange }: SwitchProps) {
   return (
-    <button className={'switch' + (on ? ' on' : '')} onClick={() => onChange(!on)} aria-pressed={on}>
+    <button
+      className={'switch' + (on ? ' on' : '')}
+      onClick={() => onChange(!on)}
+      aria-pressed={on}
+    >
       <span className="knob"></span>
     </button>
   )
